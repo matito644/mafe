@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cwm6qry2uj1el" path="res://icon.svg" id="1_8efdd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g5g4l"]
-size = Vector2(20, 21)
+size = Vector2(21, 21)
 
 [node name="Player" type="CharacterBody2D"]
 

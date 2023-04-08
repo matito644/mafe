@@ -5,23 +5,34 @@
 [ext_resource type="Script" path="res://scenes/player.gd" id="3_7re07"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jcma3"]
-size = Vector2(20, 21.0657)
+size = Vector2(21.2793, 20.8217)
 
 [node name="Main" type="Node2D"]
 
+[node name="Player" parent="." instance=ExtResource("2_7rl2t")]
+position = Vector2(639, 579)
+script = ExtResource("3_7re07")
+
+[node name="Enemy" parent="." instance=ExtResource("2_7rl2t")]
+position = Vector2(270, 132)
+rotation = -3.14159
+scale = Vector2(1.5, 1.5)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(484, 512)
-scale = Vector2(13.8241, 2.04915)
+position = Vector2(638, 271)
+scale = Vector2(10, 0.2)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 texture = ExtResource("1_gkk16")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, -0.73201)
+position = Vector2(0.108509, 9.15527e-05)
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_jcma3")
 
-[node name="Player" parent="." instance=ExtResource("2_7rl2t")]
-position = Vector2(243, 39)
-script = ExtResource("3_7re07")
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+build_mode = 1
+polygon = PackedVector2Array(1, 284, 1, 1001, 1281, 1004, 1280, 283)
