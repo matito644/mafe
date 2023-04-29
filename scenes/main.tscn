@@ -1,68 +1,91 @@
-[gd_scene load_steps=11 format=3 uid="uid://cscdu078d1t7t"]
+[gd_scene load_steps=18 format=3 uid="uid://cscdu078d1t7t"]
 
-[ext_resource type="Texture2D" uid="uid://cwm6qry2uj1el" path="res://icon.svg" id="1_gkk16"]
-[ext_resource type="Texture2D" uid="uid://bavsjfk1e1qm8" path="res://assets/background/bigSimple/background.tres" id="1_kqkck"]
 [ext_resource type="PackedScene" uid="uid://d07h1lew26yi8" path="res://scenes/player.tscn" id="2_7rl2t"]
-[ext_resource type="Script" path="res://scenes/player.gd" id="3_7re07"]
+[ext_resource type="Texture2D" uid="uid://bh20vnwg5ojt0" path="res://assets/background/anotherBackground/background_1.png" id="4_ds13b"]
 [ext_resource type="PackedScene" uid="uid://cqvytmnwnfxd0" path="res://scenes/portal.tscn" id="5_n0pip"]
-[ext_resource type="Script" path="res://scenes/portal1.gd" id="6_6ipk2"]
-[ext_resource type="Script" path="res://scenes/portal2.gd" id="7_6ofa5"]
+[ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="5_r08fi"]
+[ext_resource type="Texture2D" uid="uid://c7d8ttaoyq76r" path="res://assets/background/anotherBackground/background_4.png" id="5_tnalm"]
+[ext_resource type="Texture2D" uid="uid://cfdb3d3is35kc" path="res://assets/background/murosyDemas/MiniAsteroids/01.png" id="6_6tcxh"]
+[ext_resource type="Texture2D" uid="uid://dygpkugkcup73" path="res://assets/background/murosyDemas/RandomBuildings/B01.png" id="6_j5lft"]
+[ext_resource type="Texture2D" uid="uid://cbpcul7pk6pes" path="res://assets/background/murosyDemas/MiniAsteroids/02.png" id="7_oruvf"]
+[ext_resource type="Texture2D" uid="uid://da0t8h200c3tb" path="res://assets/background/murosyDemas/MiniAsteroids/03.png" id="8_rb6jj"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4srh1"]
-texture = ExtResource("1_kqkck")
-texture_region_size = Vector2i(320, 320)
-use_texture_padding = false
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wb00y"]
+texture = ExtResource("4_ds13b")
+texture_region_size = Vector2i(256, 224)
 0:0/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_4j56v"]
-tile_size = Vector2i(320, 320)
-sources/0 = SubResource("TileSetAtlasSource_4srh1")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mmc1"]
+texture = ExtResource("5_tnalm")
+texture_region_size = Vector2i(256, 224)
+0:0/0 = 0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jcma3"]
-size = Vector2(21.2793, 20.8217)
+[sub_resource type="TileSet" id="TileSet_8hndy"]
+tile_size = Vector2i(256, 224)
+sources/0 = SubResource("TileSetAtlasSource_wb00y")
+sources/2 = SubResource("TileSetAtlasSource_4mmc1")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tptk5"]
+texture = ExtResource("6_j5lft")
+texture_region_size = Vector2i(50, 44)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-25, -25, 25, -25, 25, 25, -25, 25)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kgp4r"]
+texture = ExtResource("6_6tcxh")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r10pb"]
+texture = ExtResource("7_oruvf")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tl67h"]
+texture = ExtResource("8_rb6jj")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_ftna5"]
+tile_size = Vector2i(50, 50)
+physics_layer_0/collision_layer = 1
+sources/2 = SubResource("TileSetAtlasSource_kgp4r")
+sources/3 = SubResource("TileSetAtlasSource_r10pb")
+sources/4 = SubResource("TileSetAtlasSource_tl67h")
+sources/0 = SubResource("TileSetAtlasSource_tptk5")
 
 [node name="Main" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_4j56v")
-format = 2
-layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 65539, 0, 0, 65538, 0, 0, 65537, 0, 0, 65536, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0)
-
 [node name="Player" parent="." instance=ExtResource("2_7rl2t")]
 position = Vector2(639, 579)
-script = ExtResource("3_7re07")
-
-[node name="Enemy" parent="." instance=ExtResource("2_7rl2t")]
-position = Vector2(270, 132)
-rotation = -3.14159
-scale = Vector2(1.5, 1.5)
-
-[node name="Barrera" type="Area2D" parent="."]
-position = Vector2(638, 271)
-scale = Vector2(10, 0.2)
-
-[node name="Sprite2D" type="Sprite2D" parent="Barrera"]
-texture = ExtResource("1_gkk16")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrera"]
-position = Vector2(0.108509, 9.15527e-05)
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_jcma3")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
-build_mode = 1
-polygon = PackedVector2Array(1, 284, 1, 958, 1279, 959, 1280, 283)
+collision_layer = 0
 
 [node name="Portal 1" parent="." instance=ExtResource("5_n0pip")]
 position = Vector2(232, 329)
-script = ExtResource("6_6ipk2")
+other_portal_path = NodePath("../Portal 2")
 
 [node name="Portal 2" parent="." instance=ExtResource("5_n0pip")]
-position = Vector2(1239, 126)
-rotation = -1.5708
-scale = Vector2(0.8, 0.8)
-script = ExtResource("7_6ofa5")
+position = Vector2(1228, 143)
+rotation = 1.5708
+other_portal_path = NodePath("../Portal 1")
 
-[connection signal="portal_shoot" from="Portal 1" to="Portal 2" method="_on_portal_1_portal_shoot"]
+[node name="Enemy" parent="." instance=ExtResource("5_r08fi")]
+position = Vector2(181, 132)
+
+[node name="TileMapSpace" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_8hndy")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 65539, 0, 0, 131075, 0, 0, 196611, 0, 0, 65536, 2, 0, 65537, 2, 0, 65538, 2, 0, 131074, 2, 0, 196610, 2, 0, 131072, 2, 0, 131073, 2, 0, 196609, 2, 0, 196608, 2, 0, 262145, 2, 0, 262147, 2, 0, 262144, 2, 0, 262146, 2, 0, 4, 2, 0, 65540, 2, 0, 131076, 2, 0, 196612, 2, 0, 262148, 2, 0)
+
+[node name="TileMapAsteroids" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_ftna5")
+format = 2
+layer_0/tile_data = PackedInt32Array(327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 327697, 0, 0, 327698, 0, 0, 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0)

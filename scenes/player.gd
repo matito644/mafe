@@ -4,6 +4,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 
 const PROYECTIL = preload("res://scenes/proyectil.tscn")
+@onready var animation_player = $AnimationPlayer
 
 
 func _physics_process(delta):
@@ -21,6 +22,7 @@ func _physics_process(delta):
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		
 	move_and_slide()
+	animation_player.play("move")
 
 func _process(delta):
 	if Input.is_action_just_pressed("shoot"):

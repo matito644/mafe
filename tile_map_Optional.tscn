@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://coisadxl3yo7t"]
+
+[ext_resource type="Texture2D" uid="uid://bavsjfk1e1qm8" path="res://assets/background/bigSimple/background.tres" id="1_wjlex"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4srh1"]
+texture = ExtResource("1_wjlex")
+texture_region_size = Vector2i(320, 320)
+use_texture_padding = false
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4j56v"]
+tile_size = Vector2i(320, 320)
+sources/0 = SubResource("TileSetAtlasSource_4srh1")
+
+[node name="TileMap" type="TileMap"]
+tile_set = SubResource("TileSet_4j56v")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 65539, 0, 0, 65538, 0, 0, 65537, 0, 0, 65536, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0)
