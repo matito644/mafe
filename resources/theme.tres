@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://chursmdm8e4h3"]
+
+[ext_resource type="FontFile" uid="uid://d3mjak2t1gtt7" path="res://assets/GravityRegular5.ttf" id="1_qbl0r"]
+
+[resource]
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_qbl0r")

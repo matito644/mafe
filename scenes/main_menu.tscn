@@ -1,0 +1,123 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0dw8t71v5s2x"]
+
+[ext_resource type="Texture2D" uid="uid://dldf2s3hxj7e4" path="res://assets/menu/box.png" id="1_aljn2"]
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_eoqwt"]
+[ext_resource type="PackedScene" uid="uid://coisadxl3yo7t" path="res://tile_map_Optional.tscn" id="2_fmbg0"]
+[ext_resource type="Texture2D" uid="uid://chsunh5b7kurw" path="res://assets/menu/title.png" id="2_v2w8o"]
+[ext_resource type="Theme" uid="uid://chursmdm8e4h3" path="res://resources/theme.tres" id="4_b6qdj"]
+[ext_resource type="AudioStream" uid="uid://claaueypou247" path="res://resources/menu.wav" id="6_w0w6w"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eoqwt")
+
+[node name="fondo" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0745098, 0.25098, 0.352941, 1)
+
+[node name="TileMap" parent="." instance=ExtResource("2_fmbg0")]
+
+[node name="title" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 401.0
+offset_top = 211.0
+offset_right = 876.0
+offset_bottom = 319.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_v2w8o")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = -73.0
+offset_right = 184.0
+offset_bottom = 238.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_b6qdj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="start" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("1_aljn2")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/start"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+
+[node name="exit" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("1_aljn2")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/exit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+
+[node name="credits" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("1_aljn2")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Credits"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_w0w6w")
+autoplay = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

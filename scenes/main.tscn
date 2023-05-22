@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cscdu078d1t7t"]
+[gd_scene load_steps=19 format=3 uid="uid://cscdu078d1t7t"]
 
 [ext_resource type="PackedScene" uid="uid://d07h1lew26yi8" path="res://scenes/player.tscn" id="2_7rl2t"]
 [ext_resource type="Texture2D" uid="uid://bh20vnwg5ojt0" path="res://assets/background/anotherBackground/background_1.png" id="4_ds13b"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dygpkugkcup73" path="res://assets/background/murosyDemas/RandomBuildings/B01.png" id="6_j5lft"]
 [ext_resource type="Texture2D" uid="uid://cbpcul7pk6pes" path="res://assets/background/murosyDemas/MiniAsteroids/02.png" id="7_oruvf"]
 [ext_resource type="Texture2D" uid="uid://da0t8h200c3tb" path="res://assets/background/murosyDemas/MiniAsteroids/03.png" id="8_rb6jj"]
+[ext_resource type="AudioStream" uid="uid://n3kas3gbu2to" path="res://resources/battle.wav" id="10_k3qhg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wb00y"]
 texture = ExtResource("4_ds13b")
@@ -89,3 +90,7 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 65539, 
 tile_set = SubResource("TileSet_ftna5")
 format = 2
 layer_0/tile_data = PackedInt32Array(327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 327697, 0, 0, 327698, 0, 0, 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_k3qhg")
+autoplay = true
