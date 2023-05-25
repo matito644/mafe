@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://u1vy2eug6qb5"]
+
+[ext_resource type="Script" path="res://scenes/hud.gd" id="1_nxog3"]
+[ext_resource type="Texture2D" uid="uid://doke08xjqm53x" path="res://assets/bar/empty.png" id="2_tkiue"]
+[ext_resource type="Texture2D" uid="uid://b1vol0hhamyo3" path="res://assets/bar/enemyColor.png" id="3_oj87f"]
+[ext_resource type="Texture2D" uid="uid://cbfiubr7mdj4h" path="res://assets/bar/playerColor.png" id="4_f86il"]
+[ext_resource type="Texture2D" uid="uid://bc5rc2l34pcg3" path="res://assets/bar/Heart.png" id="5_cuo1w"]
+
+[node name="HUD" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nxog3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(344, 930)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_cuo1w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(937, 28)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_cuo1w")
+
+[node name="EnemyTextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+value = 100.0
+texture_under = ExtResource("2_tkiue")
+texture_progress = ExtResource("3_oj87f")
+
+[node name="PlayerTextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+value = 100.0
+texture_under = ExtResource("2_tkiue")
+texture_progress = ExtResource("4_f86il")

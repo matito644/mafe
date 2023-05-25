@@ -1,11 +1,26 @@
 extends CharacterBody2D
 
+
+const SPEED = 300.0
 @onready var animation_player = $AnimationPlayer
+@onready var hud = $"../../HUD"
 
 func _physics_process(delta):
 	animation_player.play("idle")
-#const SPEED = 300.0
-#const JUMP_VELOCITY = -400.0
+	
+const MAX_HP= 100
+var hp = 100:
+	set(value):
+		hp=value
+		hud.set_health(hp)
+	get:
+		return hp
+
+func take_damage():
+	if hp > 0:
+		hp = max(hp-15, 0)
+	#else:
+	#	queue_free()
 #
 ## Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")

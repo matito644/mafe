@@ -1,15 +1,19 @@
-[gd_scene load_steps=19 format=3 uid="uid://cscdu078d1t7t"]
+[gd_scene load_steps=22 format=3 uid="uid://cscdu078d1t7t"]
 
 [ext_resource type="PackedScene" uid="uid://d07h1lew26yi8" path="res://scenes/player.tscn" id="2_7rl2t"]
+[ext_resource type="Script" path="res://scenes/areaEnemy.gd" id="2_wau10"]
 [ext_resource type="Texture2D" uid="uid://bh20vnwg5ojt0" path="res://assets/background/anotherBackground/background_1.png" id="4_ds13b"]
 [ext_resource type="PackedScene" uid="uid://cqvytmnwnfxd0" path="res://scenes/portal.tscn" id="5_n0pip"]
-[ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="5_r08fi"]
+[ext_resource type="PackedScene" uid="uid://du3oswmjip7ej" path="res://scenes/enemy.tscn" id="5_r08fi"]
 [ext_resource type="Texture2D" uid="uid://c7d8ttaoyq76r" path="res://assets/background/anotherBackground/background_4.png" id="5_tnalm"]
 [ext_resource type="Texture2D" uid="uid://cfdb3d3is35kc" path="res://assets/background/murosyDemas/MiniAsteroids/01.png" id="6_6tcxh"]
 [ext_resource type="Texture2D" uid="uid://dygpkugkcup73" path="res://assets/background/murosyDemas/RandomBuildings/B01.png" id="6_j5lft"]
 [ext_resource type="Texture2D" uid="uid://cbpcul7pk6pes" path="res://assets/background/murosyDemas/MiniAsteroids/02.png" id="7_oruvf"]
 [ext_resource type="Texture2D" uid="uid://da0t8h200c3tb" path="res://assets/background/murosyDemas/MiniAsteroids/03.png" id="8_rb6jj"]
 [ext_resource type="AudioStream" uid="uid://n3kas3gbu2to" path="res://resources/battle.wav" id="10_k3qhg"]
+[ext_resource type="PackedScene" uid="uid://u1vy2eug6qb5" path="res://scenes/hud.tscn" id="12_twxjv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6pc8q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wb00y"]
 texture = ExtResource("4_ds13b")
@@ -69,6 +73,18 @@ sources/0 = SubResource("TileSetAtlasSource_tptk5")
 position = Vector2(639, 579)
 collision_layer = 0
 
+[node name="areaEnemy" type="Area2D" parent="."]
+position = Vector2(214, 127)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("2_wau10")
+
+[node name="Enemy" parent="areaEnemy" instance=ExtResource("5_r08fi")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaEnemy"]
+scale = Vector2(6, 6)
+shape = SubResource("CircleShape2D_6pc8q")
+
 [node name="Portal 1" parent="." instance=ExtResource("5_n0pip")]
 position = Vector2(232, 329)
 other_portal_path = NodePath("../Portal 2")
@@ -77,9 +93,6 @@ other_portal_path = NodePath("../Portal 2")
 position = Vector2(1228, 143)
 rotation = 1.5708
 other_portal_path = NodePath("../Portal 1")
-
-[node name="Enemy" parent="." instance=ExtResource("5_r08fi")]
-position = Vector2(181, 132)
 
 [node name="TileMapSpace" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_8hndy")
@@ -94,3 +107,12 @@ layer_0/tile_data = PackedInt32Array(327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 3
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_k3qhg")
 autoplay = true
+
+[node name="HUD" parent="." instance=ExtResource("12_twxjv")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1281.0
+offset_bottom = 962.0
+grow_horizontal = 1
+grow_vertical = 1

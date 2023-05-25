@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0dw8t71v5s2x"]
+[gd_scene load_steps=8 format=3 uid="uid://b0dw8t71v5s2x"]
 
 [ext_resource type="Texture2D" uid="uid://dldf2s3hxj7e4" path="res://assets/menu/box.png" id="1_aljn2"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_eoqwt"]
 [ext_resource type="PackedScene" uid="uid://coisadxl3yo7t" path="res://tile_map_Optional.tscn" id="2_fmbg0"]
 [ext_resource type="Texture2D" uid="uid://chsunh5b7kurw" path="res://assets/menu/title.png" id="2_v2w8o"]
 [ext_resource type="Theme" uid="uid://chursmdm8e4h3" path="res://resources/theme.tres" id="4_b6qdj"]
+[ext_resource type="Texture2D" uid="uid://bmh5gng5ox5sj" path="res://assets/menu/box2.png" id="6_a107n"]
 [ext_resource type="AudioStream" uid="uid://claaueypou247" path="res://resources/menu.wav" id="6_w0w6w"]
 
 [node name="Control" type="Control"]
@@ -59,6 +60,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("1_aljn2")
+texture_hover = ExtResource("6_a107n")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/start"]
 layout_mode = 1
@@ -79,6 +81,7 @@ text = "Start"
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("1_aljn2")
+texture_hover = ExtResource("6_a107n")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/exit"]
 layout_mode = 1
@@ -99,6 +102,7 @@ text = "Exit"
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("1_aljn2")
+texture_hover = ExtResource("6_a107n")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/credits"]
 layout_mode = 1
