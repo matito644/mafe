@@ -7,6 +7,6 @@ func _ready():
 	area_entered.connect(_on_area_entered)
 
 
-func _on_area_entered():
+func _on_area_entered(area:):
 	character_body_2d.take_damage()
 	

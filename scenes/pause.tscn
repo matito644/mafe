@@ -1,0 +1,129 @@
+[gd_scene load_steps=6 format=3 uid="uid://b75tqs7lc0sr0"]
+
+[ext_resource type="Theme" uid="uid://chursmdm8e4h3" path="res://resources/theme.tres" id="1_hkrn4"]
+[ext_resource type="Script" path="res://scenes/pause.gd" id="1_r7rud"]
+[ext_resource type="Texture2D" uid="uid://dldf2s3hxj7e4" path="res://assets/menu/box.png" id="2_wr5wa"]
+[ext_resource type="Texture2D" uid="uid://bmh5gng5ox5sj" path="res://assets/menu/box2.png" id="3_1nayo"]
+[ext_resource type="AudioStream" uid="uid://drxpkjfypkpxr" path="res://resources/menu.wav" id="4_xwsuv"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r7rud")
+
+[node name="fondo" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0745098, 0.25098, 0.352941, 0.690196)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -214.5
+offset_right = 185.0
+offset_bottom = -137.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hkrn4")
+theme_override_font_sizes/font_size = 74
+text = "PAUSE"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = -73.0
+offset_right = 184.0
+offset_bottom = 238.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hkrn4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="resume" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_wr5wa")
+texture_hover = ExtResource("3_1nayo")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/resume"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Resume"
+
+[node name="retry" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_wr5wa")
+texture_hover = ExtResource("3_1nayo")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/retry"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Retry"
+
+[node name="Backmenu" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_wr5wa")
+texture_hover = ExtResource("3_1nayo")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Backmenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_xwsuv")
+volume_db = -10.0

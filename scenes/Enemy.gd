@@ -4,9 +4,42 @@ extends CharacterBody2D
 const SPEED = 300.0
 @onready var animation_player = $AnimationPlayer
 @onready var hud = $"../../HUD"
+@onready var player = $"../../Player"
+@onready var ray_cast_2d = $RayCast2D
+@onready var timer = $Timer
+@onready var marker_2d = $Marker2D
+@onready var area_enemy = $".."
 
+var _projectile_scene = preload("res://scenes/proyectil_enemigo.tscn")
+var _explosion_scene = preload("res://scenes/explosions.tscn")
+var _can_fire := true
+
+var rotation_speed = PI
 func _physics_process(delta):
 	animation_player.play("idle")
+	if has_node("../../Player"):
+		var v = player.global_position - global_position
+		var angle = v.angle()+PI/2
+		var r = global_rotation
+		var angle_delta = rotation_speed * delta
+		angle = lerp_angle(r, angle, 1.0)
+		angle = clamp(angle, r-angle_delta, r+angle_delta)
+		global_rotation = angle
+		var collision_object = ray_cast_2d.get_collider()
+		if _can_fire and ray_cast_2d.is_colliding():
+			_spawn_projectile()
+			_can_fire = false
+			timer.start()
+		
+func _spawn_projectile():
+	var direction = Vector2.UP.rotated(global_rotation)
+	var projectile = _projectile_scene.instantiate()
+	projectile.velocity = direction
+	projectile.global_position = marker_2d.global_position
+	add_child(projectile)
+	
+func _on_timer_timeout():
+	_can_fire = true
 	
 const MAX_HP= 100
 var hp = 100:
@@ -19,28 +52,13 @@ var hp = 100:
 func take_damage():
 	if hp > 0:
 		hp = max(hp-15, 0)
-	#else:
+	if hp == 0:
+		var effect := _explosion_scene.instantiate()
+		effect.global_position = global_position
+		get_tree().current_scene.add_child(effect)
+		area_enemy.queue_free()
+		queue_free()
+	#else: 
 	#	queue_free()
 #
-## Get the gravity from the project settings to be synced with RigidBody nodes.
-#var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-#
-#
-#func _physics_process(delta):
-#	# Add the gravity.
-#	if not is_on_floor():
-#		velocity.y += gravity * delta
-#
-#	# Handle Jump.
-#	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-#		velocity.y = JUMP_VELOCITY
-#
-#	# Get the input direction and handle the movement/deceleration.
-#	# As good practice, you should replace UI actions with custom gameplay actions.
-#	var direction = Input.get_axis("ui_left", "ui_right")
-#	if direction:
-#		velocity.x = direction * SPEED
-#	else:
-#		velocity.x = move_toward(velocity.x, 0, SPEED)
-#
-#	move_and_slide()
+

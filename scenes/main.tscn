@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cscdu078d1t7t"]
+[gd_scene load_steps=25 format=3 uid="uid://cscdu078d1t7t"]
 
 [ext_resource type="PackedScene" uid="uid://d07h1lew26yi8" path="res://scenes/player.tscn" id="2_7rl2t"]
 [ext_resource type="Script" path="res://scenes/areaEnemy.gd" id="2_wau10"]
@@ -10,10 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://dygpkugkcup73" path="res://assets/background/murosyDemas/RandomBuildings/B01.png" id="6_j5lft"]
 [ext_resource type="Texture2D" uid="uid://cbpcul7pk6pes" path="res://assets/background/murosyDemas/MiniAsteroids/02.png" id="7_oruvf"]
 [ext_resource type="Texture2D" uid="uid://da0t8h200c3tb" path="res://assets/background/murosyDemas/MiniAsteroids/03.png" id="8_rb6jj"]
-[ext_resource type="AudioStream" uid="uid://n3kas3gbu2to" path="res://resources/battle.wav" id="10_k3qhg"]
+[ext_resource type="PackedScene" uid="uid://dxe3g2ee4kkrc" path="res://scenes/you_lose.tscn" id="12_6dmdy"]
 [ext_resource type="PackedScene" uid="uid://u1vy2eug6qb5" path="res://scenes/hud.tscn" id="12_twxjv"]
+[ext_resource type="PackedScene" uid="uid://s1cdq4scg0rv" path="res://scenes/you_won.tscn" id="13_4rd1b"]
+[ext_resource type="Script" path="res://scenes/you_lose.gd" id="13_05gpw"]
+[ext_resource type="AudioStream" uid="uid://cb0qcp82bg5hg" path="res://resources/battle.wav" id="13_b40pr"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6pc8q"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_cqfoe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wb00y"]
 texture = ExtResource("4_ds13b")
@@ -61,17 +64,14 @@ texture_region_size = Vector2i(50, 50)
 
 [sub_resource type="TileSet" id="TileSet_ftna5"]
 tile_size = Vector2i(50, 50)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 35
+physics_layer_0/collision_mask = 35
 sources/2 = SubResource("TileSetAtlasSource_kgp4r")
 sources/3 = SubResource("TileSetAtlasSource_r10pb")
 sources/4 = SubResource("TileSetAtlasSource_tl67h")
 sources/0 = SubResource("TileSetAtlasSource_tptk5")
 
 [node name="Main" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource("2_7rl2t")]
-position = Vector2(639, 579)
-collision_layer = 0
 
 [node name="areaEnemy" type="Area2D" parent="."]
 position = Vector2(214, 127)
@@ -80,10 +80,12 @@ collision_mask = 3
 script = ExtResource("2_wau10")
 
 [node name="Enemy" parent="areaEnemy" instance=ExtResource("5_r08fi")]
+scale = Vector2(1.5, 1.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areaEnemy"]
-scale = Vector2(6, 6)
-shape = SubResource("CircleShape2D_6pc8q")
+position = Vector2(-1, -14)
+scale = Vector2(8, 8)
+shape = SubResource("CircleShape2D_cqfoe")
 
 [node name="Portal 1" parent="." instance=ExtResource("5_n0pip")]
 position = Vector2(232, 329)
@@ -95,6 +97,8 @@ rotation = 1.5708
 other_portal_path = NodePath("../Portal 1")
 
 [node name="TileMapSpace" type="TileMap" parent="."]
+light_mask = 16
+visibility_layer = 16
 tile_set = SubResource("TileSet_8hndy")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 65539, 0, 0, 131075, 0, 0, 196611, 0, 0, 65536, 2, 0, 65537, 2, 0, 65538, 2, 0, 131074, 2, 0, 196610, 2, 0, 131072, 2, 0, 131073, 2, 0, 196609, 2, 0, 196608, 2, 0, 262145, 2, 0, 262147, 2, 0, 262144, 2, 0, 262146, 2, 0, 4, 2, 0, 65540, 2, 0, 131076, 2, 0, 196612, 2, 0, 262148, 2, 0)
@@ -102,11 +106,10 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 65539, 
 [node name="TileMapAsteroids" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ftna5")
 format = 2
-layer_0/tile_data = PackedInt32Array(327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 327697, 0, 0, 327698, 0, 0, 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0)
+layer_0/tile_data = PackedInt32Array(327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 327697, 0, 0, 327698, 0, 0, 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0, 393215, 0, 0, 458751, 0, 0, 524287, 0, 0, 589823, 0, 0, 655359, 0, 0, 720895, 0, 0, 786431, 0, 0, 851967, 0, 0, 917503, 0, 0, 983039, 0, 0, 1048575, 0, 0, 1114111, 0, 0, 1179647, 0, 0, 1245183, 0, 0, 1310719, 0, 0, 1376255, 0, 0, 1310720, 0, 0, 1310721, 0, 0, 1310722, 0, 0, 1310723, 0, 0, 1310724, 0, 0, 1310725, 0, 0, 1310726, 0, 0, 1310727, 0, 0, 1310728, 0, 0, 1310729, 0, 0, 1310730, 0, 0, 1310731, 0, 0, 1310732, 0, 0, 1310733, 0, 0, 1310734, 0, 0, 1310735, 0, 0, 1310736, 0, 0, 1310737, 0, 0, 327706, 0, 0, 393242, 0, 0, 458778, 0, 0, 524314, 0, 0, 589850, 0, 0, 655386, 0, 0, 720922, 0, 0, 786458, 0, 0, 851994, 0, 0, 917530, 0, 0, 983066, 0, 0, 1048602, 0, 0, 1114138, 0, 0, 1179674, 0, 0, 1245210, 0, 0, 1310746, 0, 0, 1310738, 0, 0, 1310739, 0, 0, 1310740, 0, 0, 1310741, 0, 0, 1310742, 0, 0, 1310743, 0, 0, 1310744, 0, 0, 1310745, 0, 0)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_k3qhg")
-autoplay = true
+[node name="Player" parent="." instance=ExtResource("2_7rl2t")]
+position = Vector2(619, 579)
 
 [node name="HUD" parent="." instance=ExtResource("12_twxjv")]
 anchors_preset = 0
@@ -116,3 +119,24 @@ offset_right = 1281.0
 offset_bottom = 962.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="youLose" parent="CanvasLayer" instance=ExtResource("12_6dmdy")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1281.0
+offset_bottom = 962.0
+grow_horizontal = 1
+grow_vertical = 1
+script = ExtResource("13_05gpw")
+
+[node name="youWon" parent="CanvasLayer" instance=ExtResource("13_4rd1b")]
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_b40pr")
+volume_db = -10.0
+autoplay = true

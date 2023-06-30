@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://chsunh5b7kurw" path="res://assets/menu/title.png" id="2_v2w8o"]
 [ext_resource type="Theme" uid="uid://chursmdm8e4h3" path="res://resources/theme.tres" id="4_b6qdj"]
 [ext_resource type="Texture2D" uid="uid://bmh5gng5ox5sj" path="res://assets/menu/box2.png" id="6_a107n"]
-[ext_resource type="AudioStream" uid="uid://claaueypou247" path="res://resources/menu.wav" id="6_w0w6w"]
+[ext_resource type="AudioStream" uid="uid://drxpkjfypkpxr" path="res://resources/menu.wav" id="7_er1mf"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -120,8 +120,10 @@ grow_vertical = 2
 text = "Credits"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_w0w6w")
+stream = ExtResource("7_er1mf")
+volume_db = -10.0
 autoplay = true
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/credits" to="." method="_on_credits_pressed"]
