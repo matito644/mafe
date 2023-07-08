@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0dw8t71v5s2x"]
+[gd_scene load_steps=9 format=3 uid="uid://b0dw8t71v5s2x"]
 
 [ext_resource type="Texture2D" uid="uid://dldf2s3hxj7e4" path="res://assets/menu/box.png" id="1_aljn2"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_eoqwt"]
@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://chursmdm8e4h3" path="res://resources/theme.tres" id="4_b6qdj"]
 [ext_resource type="Texture2D" uid="uid://bmh5gng5ox5sj" path="res://assets/menu/box2.png" id="6_a107n"]
 [ext_resource type="AudioStream" uid="uid://drxpkjfypkpxr" path="res://resources/menu.wav" id="7_er1mf"]
+[ext_resource type="PackedScene" uid="uid://c5ixsib4lxf1c" path="res://scenes/credits.tscn" id="8_g0bip"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -123,6 +124,11 @@ text = "Credits"
 stream = ExtResource("7_er1mf")
 volume_db = -10.0
 autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="credits" parent="CanvasLayer" instance=ExtResource("8_g0bip")]
+visible = false
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
