@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cscdu078d1t7t"]
+[gd_scene load_steps=30 format=3 uid="uid://cscdu078d1t7t"]
 
 [ext_resource type="PackedScene" uid="uid://d07h1lew26yi8" path="res://scenes/player.tscn" id="2_7rl2t"]
 [ext_resource type="Script" path="res://scenes/areaEnemy.gd" id="2_wau10"]
@@ -8,9 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://c7d8ttaoyq76r" path="res://assets/background/anotherBackground/background_4.png" id="5_tnalm"]
 [ext_resource type="Texture2D" uid="uid://cfdb3d3is35kc" path="res://assets/background/murosyDemas/MiniAsteroids/01.png" id="6_6tcxh"]
 [ext_resource type="Texture2D" uid="uid://dygpkugkcup73" path="res://assets/background/murosyDemas/RandomBuildings/B01.png" id="6_j5lft"]
+[ext_resource type="Texture2D" uid="uid://ucntum5qbpco" path="res://assets/background/murosyDemas/RandomBuildings/B02.png" id="7_oh0s2"]
 [ext_resource type="Texture2D" uid="uid://cbpcul7pk6pes" path="res://assets/background/murosyDemas/MiniAsteroids/02.png" id="7_oruvf"]
 [ext_resource type="Texture2D" uid="uid://da0t8h200c3tb" path="res://assets/background/murosyDemas/MiniAsteroids/03.png" id="8_rb6jj"]
 [ext_resource type="PackedScene" uid="uid://dxe3g2ee4kkrc" path="res://scenes/you_lose.tscn" id="12_6dmdy"]
+[ext_resource type="PackedScene" uid="uid://b75tqs7lc0sr0" path="res://scenes/pause.tscn" id="12_flyco"]
+[ext_resource type="PackedScene" uid="uid://cfjk53xlt3uue" path="res://scenes/hud_2.tscn" id="12_kryjo"]
+[ext_resource type="PackedScene" uid="uid://d05lk6s1sjtuq" path="res://scenes/next_level.tscn" id="12_lvige"]
 [ext_resource type="PackedScene" uid="uid://u1vy2eug6qb5" path="res://scenes/hud.tscn" id="12_twxjv"]
 [ext_resource type="PackedScene" uid="uid://s1cdq4scg0rv" path="res://scenes/you_won.tscn" id="13_4rd1b"]
 [ext_resource type="Script" path="res://scenes/you_lose.gd" id="13_05gpw"]
@@ -36,10 +40,36 @@ sources/2 = SubResource("TileSetAtlasSource_4mmc1")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tptk5"]
 texture = ExtResource("6_j5lft")
 texture_region_size = Vector2i(50, 44)
+0:0/next_alternative_id = 3
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-25, -25, 25, -25, 25, 25, -25, 25)
+0:0/1 = 1
+0:0/1/transpose = true
+0:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/1/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_70lr3"]
+texture = ExtResource("7_oh0s2")
+texture_region_size = Vector2i(50, 50)
+0:0/next_alternative_id = 5
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/1/physics_layer_0/angular_velocity = 0.0
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/2/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/2/physics_layer_0/angular_velocity = 0.0
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/3/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/3/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kgp4r"]
 texture = ExtResource("6_6tcxh")
@@ -70,6 +100,7 @@ sources/2 = SubResource("TileSetAtlasSource_kgp4r")
 sources/3 = SubResource("TileSetAtlasSource_r10pb")
 sources/4 = SubResource("TileSetAtlasSource_tl67h")
 sources/0 = SubResource("TileSetAtlasSource_tptk5")
+sources/10 = SubResource("TileSetAtlasSource_70lr3")
 
 [node name="Main" type="Node2D"]
 
@@ -121,6 +152,16 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="hud2" parent="CanvasLayer" instance=ExtResource("12_kryjo")]
+visible = false
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("12_flyco")]
+visible = false
+
+[node name="nextLevel" parent="CanvasLayer" instance=ExtResource("12_lvige")]
+visible = false
+visibility_layer = 2
 
 [node name="youLose" parent="CanvasLayer" instance=ExtResource("12_6dmdy")]
 visible = false

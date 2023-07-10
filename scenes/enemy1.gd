@@ -3,7 +3,9 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 @onready var animation_player = $AnimationPlayer
-@onready var hud = $"../../HUD"
+#@onready var hud = $"../../HUD"
+#@onready var hud = $"../../CanvasLayer/HUD"
+@onready var hud = $"../../CanvasLayer/hud2"
 
 @onready var player = $"../../Player"
 @onready var ray_cast_2d = $RayCast2D

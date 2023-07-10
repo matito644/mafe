@@ -10,9 +10,8 @@ func _ready():
 	exit.pressed.connect(_on_exit_pressed)
 	hide()
 
-
 func _on_again_pressed():
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
 	
 func _on_menu_pressed():
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

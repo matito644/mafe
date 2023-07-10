@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfjk53xlt3uue"]
+
+[ext_resource type="Script" path="res://scenes/hud_2.gd" id="1_tdqw3"]
+[ext_resource type="Texture2D" uid="uid://bc5rc2l34pcg3" path="res://assets/bar/Heart.png" id="2_ni1h0"]
+[ext_resource type="Texture2D" uid="uid://doke08xjqm53x" path="res://assets/bar/empty.png" id="3_lbi7v"]
+[ext_resource type="Texture2D" uid="uid://b1vol0hhamyo3" path="res://assets/bar/enemyColor.png" id="4_0smde"]
+[ext_resource type="Texture2D" uid="uid://cbfiubr7mdj4h" path="res://assets/bar/playerColor.png" id="5_5bwo7"]
+[ext_resource type="AudioStream" uid="uid://drxpkjfypkpxr" path="res://resources/menu.wav" id="6_8upsu"]
+
+[node name="hud2" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tdqw3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1283.0
+offset_bottom = 961.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="EnemyTextureProgressBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+value = 100.0
+texture_under = ExtResource("3_lbi7v")
+texture_progress = ExtResource("4_0smde")
+
+[node name="EnemyTextureProgressBar2" type="TextureProgressBar" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+value = 100.0
+texture_under = ExtResource("3_lbi7v")
+texture_progress = ExtResource("4_0smde")
+
+[node name="Sprite2D2" type="Sprite2D" parent="MarginContainer"]
+position = Vector2(344, 928)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ni1h0")
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer"]
+position = Vector2(937, 28)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ni1h0")
+
+[node name="Sprite2D3" type="Sprite2D" parent="MarginContainer"]
+position = Vector2(939, 88)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ni1h0")
+
+[node name="PlayerTextureProgressBar" type="TextureProgressBar" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+value = 100.0
+texture_under = ExtResource("3_lbi7v")
+texture_progress = ExtResource("5_5bwo7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer"]
+stream = ExtResource("6_8upsu")
+volume_db = -10.0

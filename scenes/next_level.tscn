@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://s1cdq4scg0rv"]
+[gd_scene load_steps=5 format=3 uid="uid://d05lk6s1sjtuq"]
 
-[ext_resource type="Script" path="res://scenes/you_won.gd" id="1_c8kus"]
-[ext_resource type="Theme" uid="uid://chursmdm8e4h3" path="res://resources/theme.tres" id="2_0qjpg"]
-[ext_resource type="Texture2D" uid="uid://dldf2s3hxj7e4" path="res://assets/menu/box.png" id="3_limfp"]
-[ext_resource type="Texture2D" uid="uid://bmh5gng5ox5sj" path="res://assets/menu/box2.png" id="4_htf1f"]
+[ext_resource type="Script" path="res://nextLevel.gd" id="1_xsnup"]
+[ext_resource type="Theme" uid="uid://chursmdm8e4h3" path="res://resources/theme.tres" id="2_befan"]
+[ext_resource type="Texture2D" uid="uid://dldf2s3hxj7e4" path="res://assets/menu/box.png" id="3_jpob8"]
+[ext_resource type="Texture2D" uid="uid://bmh5gng5ox5sj" path="res://assets/menu/box2.png" id="4_kxbw2"]
 
-[node name="youWon" type="Control"]
+[node name="nextLevel" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -13,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_c8kus")
+script = ExtResource("1_xsnup")
 
 [node name="fondo" type="ColorRect" parent="."]
 layout_mode = 1
@@ -31,19 +31,25 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -331.0
-offset_top = -373.0
-offset_right = 335.0
-offset_bottom = -142.0
+offset_left = -345.0
+offset_top = -391.0
+offset_right = 395.0
+offset_bottom = -314.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_0qjpg")
+theme = ExtResource("2_befan")
 theme_override_font_sizes/font_size = 74
-text = "You Won!
-
-Congrats!"
+text = "Well Done!"
 horizontal_alignment = 1
 uppercase = true
+
+[node name="Label" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 178.0
+offset_right = 753.0
+offset_bottom = 271.0
+text = "Prepare for the next level"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -58,18 +64,18 @@ offset_right = 184.0
 offset_bottom = 238.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_0qjpg")
+theme = ExtResource("2_befan")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="again" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+[node name="nextLevel" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("3_limfp")
-texture_hover = ExtResource("4_htf1f")
+texture_normal = ExtResource("3_jpob8")
+texture_hover = ExtResource("4_kxbw2")
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/again"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/nextLevel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -82,13 +88,13 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Play again"
+text = "Next Level"
 
 [node name="menu" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("3_limfp")
-texture_hover = ExtResource("4_htf1f")
+texture_normal = ExtResource("3_jpob8")
+texture_hover = ExtResource("4_kxbw2")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/menu"]
 layout_mode = 1
@@ -108,8 +114,8 @@ text = "menu"
 [node name="exit" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("3_limfp")
-texture_hover = ExtResource("4_htf1f")
+texture_normal = ExtResource("3_jpob8")
+texture_hover = ExtResource("4_kxbw2")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/exit"]
 layout_mode = 1

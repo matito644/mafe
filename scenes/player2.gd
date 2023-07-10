@@ -6,9 +6,7 @@ const SPEED = 300.0
 const PROYECTIL = preload("res://scenes/proyectil.tscn")
 var _explosion_scene = preload("res://scenes/explosions.tscn")
 @onready var animation_player = $AnimationPlayer
-@onready var hud = $"../HUD"
-#@onready var hud = $"../CanvasLayer/HUD"
-@onready var hud_2 = $"../CanvasLayer/hud2"
+@onready var hud = $"../CanvasLayer/hud2"
 
 
 func _physics_process(delta):
